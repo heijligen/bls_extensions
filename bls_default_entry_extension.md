@@ -1,5 +1,5 @@
 # Boot Loader Specification Default Entry Extension
-Status: Draft, 2019-01-01, Thomas Heijligen <src@posteo.de>
+Status: Draft, 2019-01-08, Thomas Heijligen <src@posteo.de>
 
 The Boot Loader Specification has no feature for setting an entry that is loaded by default. 
 Currently the entry choosing for automatic boot is done by the loader and the behavior may differ between individual implementations.
@@ -15,15 +15,14 @@ If the $BOOT/loader/default.conf file is available and valid the loader should l
 Else the loader specific fallback should be used.
 
 If $BOOT/loader/default.conf is not available at system installation the installer may add this file.
-Else the installer should not modify it automatically. Only the system specified at $BOOT/loader/default.conf should 
-update this file automatically. An user enforced update is always possible
+Else the installer should not modify it. Only the system specified at $BOOT/loader/default.conf should 
+update this file. Let the user decide which system should be the default
 
 The $BOOT/loader/default.conf file has following keys:
 - *machine-id* refers to the machine-id key of the entry that should boot by default.
    This entry is required.
 
-- *version* refers to the version key of the entry that should boot by default 
-   or 'latest' for booting the highest version matching machine-id.
+- *version* refers to the version key of the entry that should boot by default.
    This entry is required.
    
 - *timeout* contains the time in seconds until the default entry will boot automatically. 
