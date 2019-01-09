@@ -1,15 +1,18 @@
 # Boot Loader Specification Signed Entry Extension
-## Status: Draft, 2019-01-08, Thomas Heijligen <src@posteo.de>
+## Status: Draft, 2019-01-09, Thomas Heijligen <src@posteo.de>
 
 
 The Boot Loader Specification has no features for measured or verified boot.
-This Extension will add support for it. This extention will only work if the signer has full controll over the system.
+This Extension will add support for it. It will only work if the signer has full control over the system.
 
-[Introduction about secureing the boot process]
+[Introduction about securing the boot process]
 
-[introduction and benefits of this  procedure]
-UEFI PE files have the option for embedded signatures. Other filetypes havn't this option. When saving the 
-signature in seperat file we does not depent on a single PE file. 
+Each entry file can hold the hashes of files needed for boot this entry. The entry file is signed cryptographic.
+If the signature matches the boot entry will be shown. When the entry is selected for boot the stored hashes will be compared
+with the calculated. If they match the system can boot.
+The private signing key can be hold by the user who sign all necessary files each time those were updated. 
+Or by an vendor who delivers prebuild files (kernel, initrd, ..., entry). In this case the machine-id key is the same on all installations. 
+It could be chosen freely.
 
 
 This extention adds new files to $BOOT/loader/entries/:
